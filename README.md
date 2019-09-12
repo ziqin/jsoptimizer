@@ -124,13 +124,13 @@ In some scenarios, developers use console.log() to debug or display some runtime
 ```js
 let res;
 const outer = () => {
-	let largeData = new Array(10000000);	
-	let oldRes = res;
+    let largeData = new Array(10000000);	
+    let oldRes = res;
     /* Unused but leaks */
-	const inner = () => {
-		if (oldRes) return largeData;
-	}
-	return () => ();
+    const inner = () => {
+        if (oldRes) return largeData;
+    }
+    return () => {};
 }
 setInterval(() => res = outer(), 10);
 ```
